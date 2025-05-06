@@ -21,8 +21,12 @@ public class RoleRepositoryMemoryImpl implements RepositoryContract<Role> {
         return roles; 
     }
 
-    public Role findById(Number id) {
+    public Role findById(Long id) {
         return roles.stream().filter(role -> role.getId().equals(id)).findFirst().orElse(null);
     }
     
+    public Role save(Role entity) {
+        roles.add(entity);
+        return entity;
+    }
 }

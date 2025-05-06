@@ -4,5 +4,6 @@ import java.util.List;
 
 public interface RepositoryContract<T> {
     List<T> findAll();
-    T findById(Number id);
+    T findById(Long id);
+    T save(T entity);
 }

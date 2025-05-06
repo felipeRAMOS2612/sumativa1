@@ -23,7 +23,12 @@ public class UserRepositoryMemoryImpl implements RepositoryContract<User> {
         return users; 
     }
 
-    public User findById(Number id) {
+    public User findById(Long id) {
         return users.stream().filter(user -> user.getId().equals(id)).findFirst().orElse(null);
+    }
+
+    public User save(User entity) {
+        users.add(entity);
+        return entity;
     }
 }
