@@ -1,4 +1,4 @@
-package com.sumativa1.envios.entities;
+package com.sumativa1.envios.domain.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

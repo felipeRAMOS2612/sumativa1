@@ -1,7 +1,7 @@
-package com.sumativa1.envios.repositories;
+package com.sumativa1.envios.infrastructure.repositories;
 
-import com.sumativa1.envios.contracts.ShipmentContract;
-import com.sumativa1.envios.entities.Shipment;
+import com.sumativa1.envios.domain.contracts.ShipmentContract;
+import com.sumativa1.envios.domain.entities.Shipment;
 
 import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
@@ -34,5 +34,20 @@ public class ShipmentRepository implements ShipmentContract {
                 .filter(s -> s.getId().equals(id))
                 .findFirst()
                 .orElse(null);
+    }
+
+    public Shipment save(Shipment entity) {
+        shipments.add(entity);
+        return entity;
+    }
+
+    public Shipment update(Long id, Shipment entity) {
+        for (int i = 0; i < shipments.size(); i++) {
+            if (shipments.get(i).getId().equals(id)) {
+                shipments.set(i, entity);
+                return entity;
+            }
+        }
+        throw new IllegalArgumentException("Shipment with ID " + entity.getId() + " not found.");
     }
 }
